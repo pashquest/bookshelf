@@ -6,9 +6,10 @@ state={
     value: "wantToRead"
 }
 
-handleChange(event) {
-    this.setState({value: event.target.value})
-  }
+handleChange = (event) => {this.setState({value: event.target.value})}
+console.log(this.state.value);
+
+
 
     render(){ 
     return(
