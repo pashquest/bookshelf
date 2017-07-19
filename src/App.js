@@ -18,7 +18,7 @@ class BooksApp extends React.Component {
      */
 
   }
-
+// API Call to get all the Books initiall before the WebSite is rendered.
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       console.log(books);
@@ -29,7 +29,7 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
+        {this.state.showSearchPage ? ( 
           <div className="search-books">
             <div className="search-books-bar">
               <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
@@ -50,8 +50,8 @@ class BooksApp extends React.Component {
               <div>
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>
-                  <div className="bookshelf-books">
-                  <ListCurrentlyReading books={this.state.books}/>
+                  <div className="bookshelf-books"> 
+                  <ListCurrentlyReading books={this.state.books}/>  
                   </div>
                 </div>
                 <div className="bookshelf">
