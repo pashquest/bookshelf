@@ -3,12 +3,14 @@ import PropTypes from 'prop-types'
 
 class ListCurrentlyReading extends React.Component {
 state={ 
-    value: "wantToRead"
+    //value: "currentlyReading"
 }
 
-handleChange = (event) => {this.setState({value: event.target.value})}
-console.log(this.state.value);
-
+// function called when the Shelf is changed by User through the dropdown.
+handleChange = (event) => {this.setState({value: event.target.value})
+var newShelfValue = event.target.value
+console.log(newShelfValue)
+}
 
 
     render(){ 
@@ -20,9 +22,9 @@ console.log(this.state.value);
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                         <div className="book-shelf-changer">
-                            <select value={this.state.value} onChange={this.handleChange}>
+                            <select onChange={this.handleChange}>
                                 <option value="none" disabled>Move to...</option>
-                                <option value="currentlyReading">Currently Reading</option>
+                                <option value="currentlyReading" selected >Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
                                 <option value="read">Read</option>
                                 <option value="none">None</option>
