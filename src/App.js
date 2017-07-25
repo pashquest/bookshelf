@@ -18,13 +18,25 @@ class BooksApp extends React.Component {
      */
 
   }
-// API Call to get all the Books initiall before the WebSite is rendered.
-  componentDidMount() {
-    BooksAPI.getAll().then((books) => {
-      console.log(books);
-      this.setState({ books })
+//to get all Books.
+getAllBooks = () => {
+    BooksAPI.getAll().then(books => {
+      this.setState({books})
     })
   }
+
+// API Call to get all the Books initiall before the WebSite is rendered.
+  componentDidMount() {
+    this.getAllBooks()
+  }
+
+// This function is triggered within the onChange function when the bookShelf is changed.
+handleChange = (bookId, newShelfValue) => {
+  console.log('called handleChange: ', bookId, newShelfValue)
+  console.log('Basser: ' , {id: bookId})
+  BooksAPI.update({id: bookId},newShelfValue)
+  this.getAllBooks()
+}
 
   render() {
     return (
@@ -51,19 +63,19 @@ class BooksApp extends React.Component {
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books"> 
-                  <ListCurrentlyReading books={this.state.books}/>  
+                  <ListCurrentlyReading books={this.state.books} handleChange={this.handleChange}/>  
                   </div>
                 </div>
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Want to Read</h2>
                   <div className="bookshelf-books">
-                  <ListToRead books={this.state.books}/>
+                  <ListToRead books={this.state.books} handleChange={this.handleChange}/>  
                   </div>
                 </div>
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Read</h2>
                   <div className="bookshelf-books">
-                    <ListRead books={this.state.books}/>
+                    <ListRead books={this.state.books} handleChange={this.handleChange}/>  
                   </div>
                 </div>
               </div>

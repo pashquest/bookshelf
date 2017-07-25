@@ -2,19 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class ListCurrentlyReading extends React.Component {
-state={ 
-    ShelfValue: "currentlyReading"
-}
-
-// function called when the Shelf is changed by User through the dropdown.
-handleChange = (bookId,newShelfValue) => {this.setState({ShelfValue: newShelfValue})
-var ShelfValue = newShelfValue
-console.log(newShelfValue)
-console.log(bookId)
-}
-
-
     render(){ 
+        
     return(
         <ol className="books-grid">
         {this.props.books.filter(book => book.shelf === "currentlyReading").map((book) => (
@@ -23,7 +12,7 @@ console.log(bookId)
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
                         <div className="book-shelf-changer">
-                            <select onChange={(e) => this.handleChange(book.id, e.target.value)}>
+                            <select onChange={(e) => this.props.handleChange(book.id, e.target.value)}>
                                 <option value="none" disabled>Move to...</option>
                                 <option value="currentlyReading" selected >Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
