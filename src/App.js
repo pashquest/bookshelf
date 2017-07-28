@@ -12,7 +12,6 @@ import { Route } from 'react-router-dom'
 class BooksApp extends React.Component {
   state={
     books: [],
-    showSearchPage: false
         /**
      * TODO: Instead of using this state variable to keep track of which page
      * we're on, use the URL in the browser's address bar. This will ensure that
@@ -35,8 +34,6 @@ getAllBooks = () => {
 
 // This function is triggered within the onChange function when the bookShelf is changed.
 handleChange = (bookId, newShelfValue) => {
-  console.log('called handleChange: ', bookId, newShelfValue)
-  console.log('Basser: ' , {id: bookId})
   BooksAPI.update({id: bookId},newShelfValue)
   this.getAllBooks()
 }
@@ -45,10 +42,10 @@ handleChange = (bookId, newShelfValue) => {
     return (
     <div className="app">
         <Route exact path="/" render={()=>(
-        <BookShelf books={this.state.books} handleChange={this.handleChange}/> 
+          <BookShelf books={this.state.books} handleChange={this.handleChange}/> 
           )} />
         <Route exact path="/search" render={()=>(
-        <SearchBooks />
+          <SearchBooks />
           )} />
     </div>
     )
