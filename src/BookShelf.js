@@ -100,7 +100,7 @@ class BookShelf extends React.Component {
         </div>
         </div>
         <div className="open-search">
-              <Link to="/SearchBook">Add a book</Link>
+              <Link to="/search">Add a book</Link>
         </div>
         </div>
     )

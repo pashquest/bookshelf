@@ -5,6 +5,7 @@ import ListCurrentlyReading from './ListCurrentlyReading'
 import ListToRead from './ListToRead'
 import ListRead from './ListRead'
 import BookShelf from './BookShelf'
+import SearchBooks from './SearchBooks'
 import { Link } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 
@@ -42,7 +43,14 @@ handleChange = (bookId, newShelfValue) => {
 
   render() {
     return (
-          <BookShelf books={this.state.books} handleChange={this.handleChange}/>
+    <div className="app">
+        <Route exact path="/" render={()=>(
+        <BookShelf books={this.state.books} handleChange={this.handleChange}/> 
+          )} />
+        <Route exact path="/search" render={()=>(
+        <SearchBooks />
+          )} />
+    </div>
     )
   }
 }
