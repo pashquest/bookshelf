@@ -23,7 +23,6 @@ class BookShelf extends React.Component {
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
             <div className="book-shelf-changer">
                 <select onChange={(e) => this.props.handleChange(book.id, e.target.value)}>
-                    <option value="none" disabled>Move to...</option>
                     <option value="currentlyReading" selected >Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
                     <option value="read">Read</option>
@@ -51,7 +50,6 @@ class BookShelf extends React.Component {
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
             <div className="book-shelf-changer">
                 <select onChange={(e) => this.props.handleChange(book.id, e.target.value)}>
-                    <option value="none" disabled>Move to...</option>
                     <option value="currentlyReading" selected >Currently Reading</option>
                     <option selected value="wantToRead">Want to Read</option>
                     <option value="read">Read</option>
@@ -79,7 +77,6 @@ class BookShelf extends React.Component {
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
             <div className="book-shelf-changer">
                 <select onChange={(e) => this.props.handleChange(book.id, e.target.value)}>
-                    <option value="none" disabled>Move to...</option>
                     <option value="currentlyReading" selected >Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
                     <option selected value="read">Read</option>
