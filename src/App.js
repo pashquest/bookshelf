@@ -1,8 +1,6 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import ListCurrentlyReading from './ListCurrentlyReading'
-import ListToRead from './ListToRead'
 import DisplaySearch from './DisplaySearch'
 import BookShelf from './BookShelf'
 import SearchBooks from './SearchBooks'

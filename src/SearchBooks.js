@@ -16,8 +16,15 @@ searchBooks = (SearchCriteria) => {
     this.setState({ srBooks })})
 }
 
+srHandleChange = (bookId, newShelfValue) => {
+  BooksAPI.update({id: bookId},newShelfValue)
+  console.log(bookId, newShelfValue)
+  //this.searchBooks("IOs")
+}
+
 
   render(){
+
   return (
     <div className="search-books">
     <div className="search-books-bar">
@@ -28,7 +35,7 @@ searchBooks = (SearchCriteria) => {
     </div>
     </div>
       <div className="search-books-results">
-      <DisplaySearch books = {this.state.srBooks}/>
+      <DisplaySearch books = {this.state.srBooks} handleChange={this.srHandleChange} />
     </div>
     </div> 
 
