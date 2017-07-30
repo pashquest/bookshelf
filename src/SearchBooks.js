@@ -17,18 +17,17 @@ searchBooks = (SearchCriteria) => {
 }
 
 srHandleChange = (bookId, newShelfValue) => {
-  BooksAPI.update({id: bookId},newShelfValue)
+  BooksAPI.update({id: bookId},newShelfValue).then(UpdateResult => console.log("Ausgabe", UpdateResult))
   console.log(bookId, newShelfValue)
   //this.searchBooks("IOs")
 }
 
 
   render(){
-
   return (
     <div className="search-books">
     <div className="search-books-bar">
-        <Link className="close-search" to="/">Close</Link>
+        <Link className="close-search" to="/" onClick={() => (console.log("OnCklick function"), this.props.getAllBooks())}>Close</Link>
     <div className="search-books-input-wrapper">
       <input type="text" placeholder="Search by title or author"
        onChange={(event) => {this.searchBooks(event.target.value)}} />

@@ -33,11 +33,11 @@ handleChange = (bookId, newShelfValue) => {
   render() {
     return (
     <div className="app">
-        <Route exact path="/" render={()=>(
+        <Route exact path="/" render={()=>( 
           <BookShelf books={this.state.books} handleChange={this.handleChange}/> 
           )} />
         <Route exact path="/search" render={()=>(
-          <SearchBooks />
+          <SearchBooks getAllBooks={this.getAllBooks}/>
           )} />
     </div>
     )

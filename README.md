@@ -9,7 +9,7 @@ Setup
 
 ### `npm install`
 
-In case you downoad the App ensure that you trigger first the installation of dependencies.
+In case you download the App ensure that you trigger first the installation of dependencies.
 
 ### `npm start`
 
