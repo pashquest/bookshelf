@@ -4,22 +4,21 @@ import { Link } from 'react-router-dom'
 import './App.css'
 import BookShelf from './BookShelf'
 import DisplaySearch from './DisplaySearch'
-import * as BooksAPI from './BooksAPI' // This * makes it import everything from a file or Package.
+import * as BooksAPI from './BooksAPI'
 
 class SearchBooks extends React.Component {
   state={ srBooks: [] }
 
-
+//Search for Books that matches the SearchCriteria
 searchBooks = (SearchCriteria) => {
   BooksAPI.search(SearchCriteria).then(srBooks => {
-    console.log(srBooks)
+    console.log(srBooks) 
     this.setState({ srBooks })})
 }
 
 srHandleChange = (bookId, newShelfValue) => {
-  BooksAPI.update({id: bookId},newShelfValue).then(UpdateResult => console.log("Ausgabe", UpdateResult))
+  BooksAPI.update({id: bookId},newShelfValue).then(UpdateResult => console.log("Ausgabe: ", UpdateResult))
   console.log(bookId, newShelfValue)
-  //this.searchBooks("IOs")
 }
 
 
@@ -34,7 +33,7 @@ srHandleChange = (bookId, newShelfValue) => {
     </div>
     </div>
       <div className="search-books-results">
-      <DisplaySearch books = {this.state.srBooks} handleChange={this.srHandleChange} />
+      <DisplaySearch srBooks = {this.state.srBooks} handleChange={this.srHandleChange} />
     </div>
     </div> 
 

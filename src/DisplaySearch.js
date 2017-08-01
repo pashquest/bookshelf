@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import SearchBooks from './SearchBooks'
 
 class DisplaySearch extends React.Component {
-    render(){
+
     
+    render(){
     return(
         <ol className="books-grid">
-        {this.props.books.map((book) => (
+        {this.props.srBooks.map((book) => (
             <li key={book.id}>
             <div className="book">
                 <div className="book-top">
