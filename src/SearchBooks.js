@@ -4,17 +4,34 @@ import { Link } from 'react-router-dom'
 import './App.css'
 import BookShelf from './BookShelf'
 import DisplaySearch from './DisplaySearch'
+import App from './App'
 import * as BooksAPI from './BooksAPI'
 
 class SearchBooks extends React.Component {
   state={ srBooks: [] }
 
-//Search for Books that matches the SearchCriteria
+//Search for Books that matches the SearchCriteria and map the correct Shelf Value
 searchBooks = (SearchCriteria) => {
-  BooksAPI.search(SearchCriteria).then(srBooks => {
-    console.log(srBooks) 
-    this.setState({ srBooks })})
-}
+  BooksAPI.search(SearchCriteria).then(res => {
+  const resBooks=res.map(srBook=> { 
+    let shelf = "none"
+    let existBook
+    if(existBook = this.props.books.find(exBook => exBook.id === srBook.id))
+       {
+        shelf = existBook.shelf
+       }
+    return {
+        id: srBook.id,
+        shelf: shelf,
+        authors: srBook.authors,
+        title: srBook.title,
+        imageLinks: {
+            thumbnail: srBook.imageLinks.thumbnail
+            }
+    }
+  })
+    this.setState({ srBooks: resBooks });
+})}
 
 srHandleChange = (bookId, newShelfValue) => {
   BooksAPI.update({id: bookId},newShelfValue).then(UpdateResult => console.log("Ausgabe: ", UpdateResult))
